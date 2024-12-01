@@ -1,7 +1,8 @@
-﻿open System
-open System.IO
+﻿#load "InputReader.fsx"
 
-let input = File.ReadAllLines @"01_Input.txt"
+open System
+
+let input = InputReader.read "01"
 
 let words = [
     "one"
