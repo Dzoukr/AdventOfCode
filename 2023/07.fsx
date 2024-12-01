@@ -1,6 +1,6 @@
-﻿#load "InputReader.fsx"
+﻿#load "../InputReader.fsx"
 
-let input = InputReader.read "07"
+let input = InputReader.read "2023" "07"
 
 type Card = string * (char * int) list
 let values = ['A'; 'K'; 'Q'; 'J'; 'T'; '9'; '8'; '7'; '6'; '5'; '4'; '3'; '2']

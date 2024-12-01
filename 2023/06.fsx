@@ -1,8 +1,8 @@
-﻿#load "InputReader.fsx"
+﻿#load "../InputReader.fsx"
 
 open System
 
-let input = InputReader.read "06"
+let input = InputReader.read "2023" "06"
 
 type Race = {
     Time : int64

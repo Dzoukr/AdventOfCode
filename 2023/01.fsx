@@ -1,8 +1,8 @@
-﻿#load "InputReader.fsx"
+﻿#load "../InputReader.fsx"
 
 open System
 
-let input = InputReader.read "01"
+let input = InputReader.read "2023" "01"
 
 let words = [
     "one"

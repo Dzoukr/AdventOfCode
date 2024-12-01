@@ -1,6 +1,6 @@
-﻿#load "InputReader.fsx"
+﻿#load "../InputReader.fsx"
 
-let input = InputReader.read "02"
+let input = InputReader.read "2023" "02"
 
 type Color =
     | Red

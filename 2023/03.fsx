@@ -1,8 +1,8 @@
-﻿#load "InputReader.fsx"
+﻿#load "../InputReader.fsx"
 
 open System
 
-let input = InputReader.read "03"
+let input = InputReader.read "2023" "03"
 
 let isSymbol (c:char) =
     Char.IsNumber(c) |> not

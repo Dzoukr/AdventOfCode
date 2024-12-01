@@ -1,8 +1,8 @@
-﻿#load "InputReader.fsx"
+﻿#load "../InputReader.fsx"
 
 open System
 
-let input = InputReader.read "04"
+let input = InputReader.read "2023" "04"
 
 type Card = {
     Id : int

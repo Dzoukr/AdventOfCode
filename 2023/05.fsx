@@ -1,9 +1,9 @@
-﻿#load "InputReader.fsx"
+﻿#load "../InputReader.fsx"
 
 open System
 open Microsoft.FSharp.Collections
 
-let input = InputReader.read "05"
+let input = InputReader.read "2023" "05"
 
 let parseMapping (src:string []) =
     let folder (acc:(string * (int64 * int64 * int64) list) list) (item:string) =
