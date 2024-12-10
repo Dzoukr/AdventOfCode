@@ -1,10 +1,9 @@
 #load "../InputReader.fsx"
 
+open System
 open System.Collections.Generic
 
 let input = InputReader.read "2024" "08"
-
-open System
 
 let exampleTxt = """
 ............
