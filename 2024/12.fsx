@@ -83,3 +83,37 @@ module Part1 =
         |> allRegions
         |> List.collect redistribute
         |> List.map (fun x -> x.Points.Length * calculatePerimeter map x) |> List.sum
+
+module Part2 =
+    let calculatePerimeterDiscounted (map: char list list) (r:Region) =
+        let isNotInMapOrSameGroup (y,x) = not <| isInMap map (y,x) || map.[y].[x] <> r.Key
+        let edges = [
+            for (y,x) in r.Points do
+                if isNotInMapOrSameGroup (y-1,x) then yield (0,y,x)
+                if isNotInMapOrSameGroup (y+1,x) then yield (1,y,x)
+                if isNotInMapOrSameGroup (y,x+1) then yield (2,y,x)
+                if isNotInMapOrSameGroup (y,x-1) then yield (3,y,x)
+        ]
+        let rec glue dirToCheck (acc:((int * int) list) list) toCheck =
+            match toCheck with
+            | [] -> acc
+            | (dir,y,x) :: xs ->
+                if dir = dirToCheck then
+                    let applicable,others = acc |> List.partition (fun l -> l |> List.exists (fun (y1,x1) -> areNeighbors (y1,x1) (y,x)))
+                    let newApp =
+                        match applicable with
+                        | [] -> [(y,x)]
+                        | h :: t -> ((y,x) :: h) @ ( t |> List.concat)
+                    glue dirToCheck (newApp :: others) xs
+                else glue dirToCheck acc xs
+        [0..3]
+        |> List.map (fun i -> edges |> glue i [])
+        |> List.map (fun x -> x.Length)
+        |> List.sum
+    let result =
+        let map = input |> parse
+        map
+        |> allRegions
+        |> List.collect redistribute
+        |> List.map (fun x -> x.Points.Length * calculatePerimeterDiscounted map x)
+        |> List.sum
